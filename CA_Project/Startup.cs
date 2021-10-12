@@ -70,10 +70,11 @@ namespace CA_Project
             if (!db.Database.CanConnect())
             {
                 db.Database.EnsureCreated();
+                DBSeed seed = new DBSeed(db);
+                seed.SeedProductTable();
             }
 
-            /*DBSeed seed = new DBSeed(db);
-            seed.SeedProductTable();*/
+
 
         }
     }

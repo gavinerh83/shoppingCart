@@ -24,7 +24,7 @@ namespace CA_Project.Middleware
             string sessionid = context.Request.Cookies["sessionid"];
             if(sessionid == null) //no cookies at all
             {
-                context.Response.Redirect("/home/login");
+                context.Response.Redirect("/home/index");
                 return;
             }
             else
