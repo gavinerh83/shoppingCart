@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Create User";
+}
+
+<div class="text-left">
+    <h2 class="display-4">Create User</h2>
+</div>
+<form id="form" action="/home/create" method="post">
+    <table>
+        <tr>
+            <td>User Id:</td>
+            <td><input id="id" name="id"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" id="password" name="password"></td>
+        </tr>
+        <tr>
+            <td>Confirm Password:</td>
+            <td><input type="password" id="confirm" name="confirm"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>Full Name:</td>
+            <td><input type="text" id="fullname" name="fullname"></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">
+                <button id="submitbtn" type="submit">Create </button>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+@section Scripts {
+    <script src="~/js/Home/Create.js"></script>
+}
