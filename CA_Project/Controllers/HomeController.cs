@@ -25,6 +25,10 @@ namespace CA_Project.Controllers
 
         public IActionResult Index() 
         {
+            if (CheckLoginStatus())
+            {
+                return LocalRedirect("/producthome/index");
+            }
             List<Session> sessions = db.Sessions.ToList();
             _sessionDict.InputStoredSessions(sessions);
             return View();
