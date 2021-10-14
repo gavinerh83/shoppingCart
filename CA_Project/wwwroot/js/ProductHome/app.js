@@ -1,6 +1,10 @@
 ﻿window.onload = function () {
     const loginSpan = document.getElementById("login");
     const signupSpan = document.getElementById("signup");
+    const shoppingCartImg = document.getElementById("shopping-cart-img");
+
+    
+
 
     loginSpan.style.display = "none";
     signupSpan.style.display = "none";

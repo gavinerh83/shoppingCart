@@ -12,9 +12,11 @@ namespace CA_Project.Controllers
     public class ProductHomeController : Controller
     {
         private readonly ApplicationDBContext db;
-        public ProductHomeController(ApplicationDBContext db)
+        private readonly SessionDictionary _sessionDict;
+        public ProductHomeController(ApplicationDBContext db, SessionDictionary sessionDict)
         {
             this.db = db;
+            _sessionDict = sessionDict;
         }
         public IActionResult Index()
         {
@@ -127,7 +129,7 @@ namespace CA_Project.Controllers
             return Request.Cookies["sessionid"];
         }
 
-        private bool CheckLoginStatus()
+        /*private bool CheckLoginStatus()
         {
             string sessionid = Request.Cookies["sessionid"];
             Session s = db.Sessions.FirstOrDefault(x =>
@@ -146,6 +148,29 @@ namespace CA_Project.Controllers
                 db.Sessions.Remove(s);
                 db.SaveChanges();
                 return false;
+            }
+            return true;
+        }*/
+
+        private bool CheckLoginStatus()
+        {
+            string sessionid = Request.Cookies["sessionid"];
+            if (sessionid == null)
+            {
+                return false;
+            }
+            long? time = _sessionDict.CheckSessionPresence(sessionid);
+            if (time == null)
+            {
+                return false;
+            }
+            else
+            {
+                //check if time is expired
+                if ((time + Session.timeout) < DateTimeOffset.Now.ToUnixTimeSeconds())
+                {
+                    return false;
+                }
             }
             return true;
         }

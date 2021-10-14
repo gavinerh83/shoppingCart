@@ -19,7 +19,7 @@
 <div style="display: inline-block; margin: 10px auto">
     <div class="search">
         <form action="/Search/" method="POST">
-            <input class="search-input" name="searchStr" placeholder="enter search here" />
+            <input class="search-input" name="searchStr" placeholder="enter search here" type="number" />
         </form>
     </div>
 
@@ -33,13 +33,13 @@
                     <img class="product-img" src="\Images\charts.png" alt="Alternate Text" />
                 </div>
                 <div>
-                    <p class="product-name">.NET Charts</p>
+                    <p class="product-name">@p.ProductName</p>
                 </div>
                 <div>
-                    <p class="product-desc">Brings powerful charting capabilities to your .NET applications</p>
+                    <p class="product-desc">@p.Desc</p>
                 </div>
                 <div>
-                    <p class="product-price">$99</p>
+                    <p class="product-price">$@p.Price</p>
                 </div>
                 <div>
                     <button class="button add-cart-btn" id="@p.Id">ADD TO CART</button>

@@ -182,3 +182,91 @@ p.product-price {
     padding: 0.5em;
     float: right;
 }
+
+
+/*Addition for ShoppingCart*/
+/*inline-block design- side by side*/
+.totals {
+    float: right;
+    display: block;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+    .totals label, #cart-total {
+        text-align: right;
+        display: inline;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+#cart-total {
+    text-decoration: underline;
+}
+
+.p-wrapper {
+    display: block;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.SC-product {
+    display: inline-block;
+    width: 20em;
+    border: none;
+    border-radius: 25px;
+    padding: 1em;
+    margin-left: 12%;
+    margin-bottom: 1em;
+    vertical-align: top;
+    text-align: center;
+}
+
+.SC-product {
+    background-color: #ffffff;
+}
+
+.QtyPR {
+    display: inline-block;
+    width: 15em;
+    margin-top: 10%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.p-price, .p-qty, .total-p-price {
+    display: block;
+    padding: 5px;
+}
+
+    .p-price label, .p-qty label,
+    .product-price, .total-p-price label,
+    .total-product-price {
+        display: inline;
+        font-weight: bold;
+    }
+
+
+/* remove btn and input design*/
+.qtybox {
+    width: 40px;
+    height: 25px;
+    padding: 2px;
+    text-align: center;
+}
+
+.remove-pdt {
+    margin-top: 5%;
+    border: 0;
+    padding: 4px 8px;
+    background-color: #c66;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+    .remove-pdt:hover {
+        background-color: #a44;
+    }

@@ -3,6 +3,7 @@ window.onload = function () {
     const closeBtn = document.getElementById("close");
     const closeBtn2 = document.getElementById("close2");
     const modalContainer = document.getElementById("modal");
+    
     //const modalContainer2 = document.getElementById("modal2");
 
 
@@ -12,11 +13,14 @@ window.onload = function () {
     const displayname = document.getElementById('displayname');
     const logout = document.getElementById("logout");
     const shoppingCartImg = document.getElementById("shopping-cart-img");
+    const purchases = document.getElementById("purchases");
+    
 
     //hidding displays
     displayname.style.display = 'none';
     logout.style.display = "none";
     shoppingCartImg.style.display = "none";
+    purchases.style.display = "none";
 
 
 
