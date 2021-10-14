@@ -136,6 +136,11 @@ namespace CA_Project.Controllers
             return LocalRedirect("/home/index");
         }
 
+        public IActionResult LoginFailed()
+        {
+            return View();
+        }
+
         public IActionResult Login(string username, string password)
         {
             if (CheckLoginStatus())

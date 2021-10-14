@@ -57,17 +57,20 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                    <a href="/cart/index"><img src="/Images/cart.png" alt="Cart" id="shopping-cart-img" style="max-width: 25px; height: auto; margin:0px; padding-top:5px" /></a>
-                               
+                                <a href="/cart/index"><img src="/Images/cart.png" alt="Cart" id="shopping-cart-img" style="max-width: 25px; height: auto; margin:0px; padding-top:5px" /></a>
+
                             </li>
                             <li class="nav-item">
-                                    @if (cart1 != null)
-                                    {
-                                        <p style="display:inline-block; margin:0px 5px; padding-top:5px;" id="number-of-items-cart">@cart1.CartProducts.Count()</p>
-                                    }
+                                @if (cart1 != null)
+                                {
+                                    <p style="display:inline-block; margin:0px 5px; padding-top:5px;" id="number-of-items-cart">@cart1.CartProducts.Count()</p>
+                                }
                             </li>
                             <li class="nav-item">
-                                <a id="purchases" class="nav-link text-dark" asp-action="index" asp-controller="PurchaseHome">Purchases</a>
+                                <a id="purchases" class="nav-link text-dark" asp-action="index" asp-controller="Purchase">Purchases</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-action="myaccount" asp-controller="Account" style="width:80px" id="account">Account</a>
                             </li>
                         </ul>
                     </div>

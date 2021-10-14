@@ -14,6 +14,7 @@ window.onload = function () {
     const logout = document.getElementById("logout");
     const shoppingCartImg = document.getElementById("shopping-cart-img");
     const purchases = document.getElementById("purchases");
+    const account = document.getElementById("account");
     
 
     //hidding displays
@@ -21,6 +22,7 @@ window.onload = function () {
     logout.style.display = "none";
     shoppingCartImg.style.display = "none";
     purchases.style.display = "none";
+    account.style.display = 'none';
 
 
 
