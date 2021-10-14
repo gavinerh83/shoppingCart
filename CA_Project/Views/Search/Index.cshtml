@@ -1,6 +1,11 @@
-﻿@{ ViewData["Title"] = "Search Products";
+﻿@section CSS{ 
+    <link rel="stylesheet" href="~/css/ProductHome/style.css" />
+}
+
+@{ ViewData["Title"] = "Search Products";
     string searchStr = (string)ViewData["searchStr"];
-    List<Product> products = (List<Product>)ViewData["products"]; 
+    List<Product> products = (List<Product>)ViewData["products"];
+
 }
 
 <div class="search">
@@ -35,9 +40,12 @@ else {
                 <p class="product-price">$@price</p>
             </div>
             <div>
-                <button class="button">ADD TO CART</button>
+                <button class="button add-cart-btn" id="@item.Id">ADD TO CART</button>
             </div>
         </div>
     } }
 </div>}
 
+@section Scripts{ 
+    <script src="~/js/ProductHome/app.js"></script>
+}

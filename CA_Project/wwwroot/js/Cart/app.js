@@ -5,12 +5,14 @@ const login = document.getElementById("login");
 const register = document.getElementById("signup");
 const cartTotal = document.getElementById("cart-total");
 const qtyBox = document.getElementsByClassName("qtybox"); //input box
+const removeBtn = document.getElementsByClassName("remove-pdt");
 
 //update subtotal and cart total
 UpdateDisplay();
 
 for (let i = 0; i < qtyBox.length; i++) {
     qtyBox[i].onblur = CheckInput;
+    removeBtn[i].addEventListener("click", RemoveProduct);
 }
 
 function UpdateDisplay() {
@@ -27,6 +29,36 @@ function UpdateDisplay() {
         carttotal += subtotal;
     }
     cartTotal.innerHTML = carttotal;
+}
+
+function RemoveProduct(event) {
+    let target = event.currentTarget;
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/cart/RemoveProduct");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status !== 200) {
+                return;
+            }
+            let data = JSON.parse(this.responseText);
+            if (data === null) {
+                alert("Update not successful");
+            } else {
+                if (data.delete === true) {
+                    let itemContainer = target.parentNode.parentNode.parentNode;
+                    let parentItemContainer = target.parentNode.parentNode.parentNode.parentNode;
+                    parentItemContainer.removeChild(itemContainer);
+                    UpdateDisplay();
+                }
+            }
+        }
+    }
+
+    let data = {
+        "id": target.id
+    };
+    xhr.send(JSON.stringify(data));
 }
 
 

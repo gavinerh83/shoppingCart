@@ -63,6 +63,27 @@ namespace CA_Project.Controllers
 
         }
 
+        public IActionResult RemoveProduct([FromBody] CartProduct cp)
+        {
+            if (!CheckLoginStatus())
+            {
+                return LocalRedirect("home/index");
+            }
+            CartProduct cartProduct = _db.CartProducts.FirstOrDefault(x =>
+                x.Id == cp.Id
+            );
+            if(cartProduct == null)
+            {
+                return Json(null);
+            }
+            _db.CartProducts.Remove(cartProduct);
+            _db.SaveChanges();
+            return Json(new
+            {
+                delete = true
+            });
+        }
+
 
         private string GetSessionID()
         {
