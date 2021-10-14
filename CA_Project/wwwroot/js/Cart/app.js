@@ -6,6 +6,9 @@ const register = document.getElementById("signup");
 const cartTotal = document.getElementById("cart-total");
 const qtyBox = document.getElementsByClassName("qtybox"); //input box
 const removeBtn = document.getElementsByClassName("remove-pdt");
+const checkoutBtn = document.getElementById("checkout");
+
+checkoutBtn.addEventListener("click", Checkout);
 
 //update subtotal and cart total
 UpdateDisplay();
@@ -81,7 +84,35 @@ function CheckInput(event) {
     //update subtotal and cart total
 }
 
+function Checkout(event) {
+    let target = event.currentTarget;
+    let cartid = target.getAttribute("cartid");
 
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/cart/checkout");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status !== 200) {
+                return;
+            }
+            let data = JSON.parse(this.responseText);
+            if (data === null) {
+                alert("Checkout was unsuccessful");
+                return;
+            } else {
+                if (data.success === true) {
+                    window.open("/MyPurchase/record");
+                }
+            }
+        }
+    }
+    let data = {
+        "id": cartid
+    };
+    xhr.send(JSON.stringify(data));
+}
 
 
 function UpdateQuantity(target) {

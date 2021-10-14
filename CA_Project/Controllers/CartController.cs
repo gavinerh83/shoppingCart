@@ -35,9 +35,17 @@ namespace CA_Project.Controllers
             Cart cart1 = _db.Carts.FirstOrDefault(x =>
                 x.User.Id == sess1.User.Id
             );
-
-            List<CartProduct> cartProducts = (List<CartProduct>) cart1.CartProducts;
-            ViewData["cartProducts"] = cartProducts;
+            if(cart1 == null)
+            {
+                ViewData["cartid"] = null;
+                ViewData["cartProducts"] = null;
+            }
+            else
+            {
+                List<CartProduct> cartProducts = (List<CartProduct>)cart1.CartProducts;
+                ViewData["cartid"] = cart1.Id;
+                ViewData["cartProducts"] = cartProducts;
+            }
             return View();
         }
 
@@ -82,6 +90,48 @@ namespace CA_Project.Controllers
             {
                 delete = true
             });
+        }
+
+        public IActionResult Checkout([FromBody] Cart cart)
+        {
+            //populate the purchase table => purchaseProducts table
+            //get the cartid from ajax
+            Cart cart1 = _db.Carts.FirstOrDefault(x =>
+                x.Id == cart.Id
+            );
+            if(cart1 == null)
+            {
+                return Json(null);
+            }
+            Purchase purchase1 = new Purchase();
+            purchase1.User = cart1.User;
+            purchase1.Date = DateTime.Now;
+            //calculate total amount
+            float total = 0.0f;
+            List<CartProduct> productsToDelete = new List<CartProduct>();
+            foreach(CartProduct cp in cart1.CartProducts)
+            {
+                total += cp.Product.Price * cp.Quantity;
+                purchase1.PurchaseProducts.Add(new PurchaseProduct()
+                {
+                    ProductQuantity = cp.Quantity,
+                    Product = cp.Product
+                });
+                _db.CartProducts.Remove(cp);
+            }
+            purchase1.TotalAmount = total;
+            _db.Purchases.Add(purchase1);
+            _db.Carts.Remove(cart1);
+            _db.SaveChanges();
+            return Json(new
+            {
+                success = true
+            });
+            //use cartid to retrieve cart
+            //retrieve the products from cart
+            //get the userid
+
+            //
         }
 
 

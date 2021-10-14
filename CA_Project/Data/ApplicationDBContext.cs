@@ -28,7 +28,6 @@ namespace CA_Project.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseProduct> PurchaseProducts { get; set; }
-        public DbSet<ActivationCode> ActivationCodes { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
     }

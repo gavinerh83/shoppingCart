@@ -12,7 +12,6 @@ namespace CA_Project.Models
         {
             Id = new Guid();
             CartProducts = new List<CartProduct>();
-            ActivationCodes = new List<ActivationCode>();
             Feedbacks = new List<Feedback>();
             PurchaseProducts = new List<PurchaseProduct>();
         }
@@ -29,7 +28,6 @@ namespace CA_Project.Models
 
 
         public virtual ICollection<CartProduct> CartProducts { get; set; }
-        public virtual ICollection<ActivationCode> ActivationCodes { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual ICollection<PurchaseProduct> PurchaseProducts { get; set; }
     }

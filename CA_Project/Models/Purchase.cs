@@ -11,7 +11,6 @@ namespace CA_Project.Models
         public Purchase()
         {
             Id = new Guid();
-            ActivationCodes = new List<ActivationCode>();
             PurchaseProducts = new List<PurchaseProduct>();
         }
         public Guid Id { get; set; }
@@ -22,6 +21,5 @@ namespace CA_Project.Models
 
         public virtual User User { get; set; }
         public virtual ICollection<PurchaseProduct> PurchaseProducts { get; set; }
-        public virtual ICollection<ActivationCode> ActivationCodes { get; set; }
     }
 }

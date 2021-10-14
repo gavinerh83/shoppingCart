@@ -85,8 +85,8 @@ C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\SignupSuccess.cshtml.g.cs
 C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
 C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\ChangePW.cshtml.g.cs
-C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
 C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Invalid.cshtml.g.cs
 C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\MyAccount.cshtml.g.cs
 C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\Validate.cshtml.g.cs
 C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\LoginFailed.cshtml.g.cs
+C:\Users\gavin\source\repos\CA_Project\CA_Project\obj\Debug\netcoreapp3.1\Razor\Views\MyPurchase\Record.cshtml.g.cs

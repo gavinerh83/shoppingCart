@@ -13,7 +13,7 @@ window.onload = function () {
     const displayname = document.getElementById('displayname');
     const logout = document.getElementById("logout");
     const shoppingCartImg = document.getElementById("shopping-cart-img");
-    const purchases = document.getElementById("purchases");
+    const purchases = document.getElementById("MyPurchase");
     const account = document.getElementById("account");
     
 

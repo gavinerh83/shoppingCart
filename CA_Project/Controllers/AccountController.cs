@@ -17,10 +17,6 @@ namespace CA_Project.Controllers
         { 
             this.db = db;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult MyAccount()
         {
             if (Request.Cookies["name"] != null)

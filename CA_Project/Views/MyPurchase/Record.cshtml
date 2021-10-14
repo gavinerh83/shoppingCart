@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewData["Title"] = "Shopping Cart";
+
+   
+    List<Purchase> PurchaseId = (List<Purchase>)ViewData["Purchase"];
+    List<PurchaseProduct> _Detail = (List<PurchaseProduct>)ViewData["Detail"];
+    var Dt_Product = _Detail.Select(x => new { _Product = x.Product.Id, _Purhcase = x.Purchase.Id }).Distinct();
+
+
+
+}
+@section Scripts {
+    <script src="~/js/MyPurchase/Purchase.js"></script>
+}
+@section CSS{
+    <link href="~/css/MyPurchase/style.css" rel="stylesheet" />
+}
+
+
+<h1>
+    My Purchase
+</h1>
+
+
+<body>
+    @foreach (Purchase Purchases in PurchaseId)
+
+    {
+        string date = Purchases.Date.ToString("yyyy-MM-dd");
+    <div id="Purchases.Id" class="p-wrapper">
+        <div class="dates">
+            <label>Date: </label>
+            <div>@date </div>
+            <label>Purhcase Id: </label>
+            <div>@Purchases.Id </div>
+        </div>
+
+        @foreach (var detail in Dt_Product)
+
+        {
+            var current_list = _Detail.Where(x => x.Product.Id == detail._Product && x.Purchase.Id == detail._Purhcase);
+            int quantity = _Detail.Where(x => x.Product.Id == detail._Product && x.Purchase.Id == detail._Purhcase).Count();
+            PurchaseProduct current = _Detail.FirstOrDefault(x => x.Product.Id == detail._Product);
+            string img = current.Product.ImageFile;
+            string name = current.Product.ProductName;
+            float price = current.Product.Price;
+            string desc = current.Product.Desc;
+
+
+            @if (Purchases.Id == detail._Purhcase)
+            {
+    <div class="SC-product">
+        <div>
+            <img class="product-img" src="\Images\@img" alt="Alt Text" />
+        </div>
+
+        <div>
+            <p class="product-name">@name</p>
+        </div>
+        <div>
+            <p class="product-desc">@desc</p>
+        </div>
+        <div class="p-price">
+            <label>Price: </label>
+            <div class="product-price">$@price</div>
+        </div>
+        <div class="p-qty">
+            <label>Qty: </label>
+            <div class="product-price">@quantity</div>
+        </div>
+
+        <label>Activation Code: </label>
+        <select class="dropdown" id="list" onchange="getSelectValue();">
+            @foreach (var activationcode in current_list)
+            {
+                <option value="js" class="dr">@activationcode.Id</option>
+            }
+        </select>
+
+    </div>
+                
+            }
+
+        }
+
+
+    </div>
+    }
+
+
+
+</body>
+
+
+
+
+
